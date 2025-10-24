@@ -5,10 +5,10 @@ const NullCtx: unique symbol = Symbol("NULL_CTX");
 export class ContextError extends Error {}
 
 export function createContext<C = any>(p: { errorMsg?: string; initialValue?: C; initializer: () => C;}): 
-  [React.Context<C | typeof NullCtx>, () => C, (p: React.PropsWithChildren) => JSX.Element];
+  [React.Context<C | typeof NullCtx>, () => C, (p: React.PropsWithChildren) => React.JSX.Element];
 
 export function createContext<C = any>(p?: { errorMsg?: string; initialValue?: C; initializer?: never }): 
-  [React.Context<C | typeof NullCtx>, () => C, (p: React.PropsWithChildren<{ value: C }>) => JSX.Element];
+  [React.Context<C | typeof NullCtx>, () => C, (p: React.PropsWithChildren<{ value: C }>) => React.JSX.Element];
 
 export function createContext<C = any>(p) {
   const context = React.createContext<C | typeof NullCtx>(p?.initialValue || NullCtx);
